@@ -12,7 +12,7 @@ insert into tbl_ConglomeradoCoralesAdultos
 	CATVID
 	)
 Select
-	(
+	
 	c.ColID,
 	cu.CuaID,
 	e.EspID,
@@ -20,7 +20,7 @@ Select
 	ad.ADID,
 	tc.TCAID,
 	tv.TVID
-	)
+	
 
 from CAFebrero2013A d
 
