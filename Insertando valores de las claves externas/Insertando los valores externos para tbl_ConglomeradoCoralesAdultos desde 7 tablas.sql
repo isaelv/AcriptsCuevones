@@ -1,41 +1,28 @@
 use CuevonesCSQL_Isael_bd001
 go
 
-select 
-	--Tablas de la BD
-	--f.FeID,
-	d.Colonia,
+insert into tbl_ConglomeradoCoralesAdultos
+	(
+	CAColID,
+	CACuaID,
+	CAEspID,
+	CAACID,
+	CAADID,
+	CATCAID,
+	CATVID
+	)
+Select
+	(
 	c.ColID,
 	cu.CuaID,
 	e.EspID,
 	ac.ACID,
 	ad.ADID,
 	tc.TCAID,
-	tv.TVID,
+	tv.TVID
+	)
 
-	--Datos de la tabla original
-	d.Colector,
-	c.ColNombre,
-	c.ColAbreviatura,
-	d.Cuadro,
-	cu.CuaNumero_de_cuadro,
-	d.Species,
-	e.EspEspecies,
-	
-	ac.ACDiametroMax,
-	d.md,
-	ac.ACDiametroPer,
-	d.pd,
-	d.area,
-	ac.ACArea,
-	d.Rdamage,
-	ad.ADAreaDanada,
-	d.[Size (cm)],
-	tc.TCATalla,
-	d.[Live tissue (cm2)],
-	tv.TVTejidoVivo
-
-	from CAFebrero2013A d
+from CAFebrero2013A d
 
 	inner join tbl_Colectores c
 	on c.ColNombre=d.Colector

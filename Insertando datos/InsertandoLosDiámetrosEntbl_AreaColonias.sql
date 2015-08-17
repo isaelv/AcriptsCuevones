@@ -3,5 +3,5 @@ GO
 
 insert into tbl_AreaColonias (ACDiametroMax, ACDiametroPer, ACarea)
 select distinct MD, PD, area
-from CAFebrero2013
-order by MD, PD
+from CAFebrero2013A
+order by MD, PD, area
