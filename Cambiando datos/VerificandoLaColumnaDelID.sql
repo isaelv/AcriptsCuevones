@@ -5,9 +5,9 @@ go
 VERIFICANDO EL ESTADO DE LA COLUMNA DEL IDENTIFICADOR
 ******************************************************/
 
-DBCC CHECKIDENT ('tbl_AreaDanada', NORESEED);
+DBCC CHECKIDENT ('tbl_ReclutasConglomerado', NORESEED);
 
 /*********************************************************
 REASIGNANDO A 1 EL ESTADO DE LA COLUMNA DEL IDENTIFICADOR
 **********************************************************/
-DBCC CHECKIDENT ('tbl_AreaDanada', RESEED, 0);
+DBCC CHECKIDENT ('tbl_ReclutasConglomerado', RESEED, 0);

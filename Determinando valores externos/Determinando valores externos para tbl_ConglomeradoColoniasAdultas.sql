@@ -19,45 +19,45 @@ select
 	c.ColAbreviatura,
 	d.Cuadro,
 	cu.CuaNumero_de_cuadro,
-	d.Species,
+	d.Especie,
 	e.EspEspecies,
 	
 	ac.ACDiametroMax,
 	d.md,
 	ac.ACDiametroPer,
 	d.pd,
-	d.area,
+	d.Areatxt,
 	ac.ACArea,
-	d.Rdamage,
+	d.AreaDanadatxt,
 	ad.ADAreaDanada,
 	d.[Size (cm)],
 	tc.TCATalla,
-	d.[Live tissue (cm2)],
+	d.TejidoVivoTxt,
 	tv.TVTejidoVivo
 
-	from CAFebrero2013A d
+	from CASeptiembre2014 d
 
 	inner join tbl_Colectores c
-	on c.ColNombre=d.Colector
+	on c.ColAbreviatura=d.Colector
 
 	inner join tbl_Cuadros cu
 	on cu.CuaNumero_de_cuadro=d.Cuadro
 
 	inner join tbl_Especies e
-	on rtrim(e.EspEspecies)=rTrim(d.Species)
+	on e.EspEspecies=d.Especie
 
 	inner join tbl_AreaColonias ac
 	on isnull(round(ac.ACDiametroMax,2),999999.99)=isnull(round(d.MD,2),999999.99) 
 		and isnull(round(ac.ACDiametroPer,2),999999.99)=isnull(round(d.PD,2),999999.99) 
-		and isnull(round(ac.ACarea,2),999999.99)=isnull(round(d.area,2),999999.99)
+		and isnull(round(ac.ACarea,2),999999.99)=isnull(round(d.AreaTxt,2),999999.99)
 
 	inner join tbl_AreaDanada ad
-	on isnull(round(ad.ADAreaDanada,2),999999.99)=isnull(round(d.Rdamage,2),999999.99)
+	on isnull(round(ad.ADAreaDanada,2),999999.99)=isnull(round(d.AreaDanadatxt,2),999999.99)
 	
 	inner join tbl_TallaColonias tc
 	on isnull(round(tc.TCATalla,2),999.99)= isnull(round(d.[Size (cm)],2),999.99)
 
 	inner join tbl_TejidoVivo tv
-	on isnull(round(tv.TVTejidoVivo,2),999999.99)=isnull(round(d.[Live tissue (cm2)],2),999999.99)
+	on isnull(round(tv.TVTejidoVivo,2),999999.99)=isnull(round(d.TejidoVivoTxt,2),999999.99)
 	
-order by cuadro,Species
+order by colonia
