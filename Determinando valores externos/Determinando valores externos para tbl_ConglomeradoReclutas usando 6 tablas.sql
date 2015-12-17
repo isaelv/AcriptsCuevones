@@ -3,6 +3,7 @@ go
 
 
 select
+	/*
 	--Valores de la tabla original.
 	d.consecutivo,
 	d.fecha,
@@ -13,7 +14,7 @@ select
 	d.identidad,
 	d.Diametro,
 	d.Altura,
-	
+	*/
 	--Valores de las claves secundarias para tbl_ReclutasConglomerado
 
 	f.FeID,
@@ -31,15 +32,14 @@ inner join tbl_Fecha f
 	on f.FeFecha_de_colecta = d.Fecha
 
 inner join tbl_Colectores c
-	ON isnull(c.ColAbreviatura,'aaa')=isnull(d.Colector,'aaa')
+	ON c.ColAbreviatura=isnull(d.Colector,'ND')
 
 inner join tbl_Muestras m
-	on ((m.MNumero_de_cuadro = d.Cuadro and m.MNumero_de_muestra = d.muestra)
-	or (m.MNumero_de_cuadro = d.Cuadro and m.MNumero_de_muestra = 9999)
-	or (m.MNumero_de_cuadro = d.cuadro and m.MNumero_de_muestra = isnull(d.Muestra,99)))
+	on (m.MNumero_de_cuadro = d.Cuadro and m.MNumero_de_muestra = d.muestra)
+	
 
 inner join tbl_Grandes_grupos gr
-	on isnull(gr.GruGrupo,'aaaa') = isnull(d.Grupo,'aaaa')
+	on gr.GruGrupo = d.Grupo
 
 inner join tbl_GenerosReclutas e
 	on e.GRGenero = d.Identidad
