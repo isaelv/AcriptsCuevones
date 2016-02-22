@@ -6,9 +6,18 @@
 
 ####ARCHIVO: "C:\Users\Héctor\Desktop\Scripts creación de la BDCuevones\varillasReclutas\Identificando muestras\identificandoMuestrasConReclutasYMuestrasExcluidas_SR_NM.sql"
 
-Es necesario saber qué muestras se deben de revisar. En el caso de las unidades de 10 x 10 cm se tienen que revisar las 2000 muestras. Sin embargo, no ha sido posible siempre revisarlas por lo que hay que hacer diferencias entre las que no se registraron reclutas de las que no se midideron 
 
-###¿Cómo insertar las muestras NO 	MEDIDAS y SIN RECLUTAS en la tbl_ReclutasConglomerado?
+Para determinar las muestras en "tbl_Muestras" que no cuentan con datos ya sea por que no tuvieron reclutas o que no se revissaron se hizo una consulta con EXCEPT del tipo:  
+
+SELECT (Primera consulta.  En esta consulta se cargan las 2000 unidades de campo)  
+
+EXCEPT (Considerando la primera consulta EXCEPT como punto de partida reducirá el listado de tbl_Muestras para sólo desplegar aquellas resultantes de la segunda consulta SELECT)  
+
+SELECT (Segunda consulta. En esta consulta se seleccionan las unidades muestrales en tbl_ReclutasConglomerado)  
+
+El resultado final es el listado de las muestras no incluidas en tbl_ReclutasConglomerado ya sea porque no tenían reclutas o no se revisaron.  
+
+###¿Cómo insertar las muestras NO MEDIDAS y SIN RECLUTAS en la tbl_ReclutasConglomerado?
 
 ####ARCHIVO: "C:\Users\Héctor\Desktop\Scripts creación de la BDCuevones\varillasReclutas\Identificando muestras\insertandoMuestrasSinReclutasYNoMedidas.sql"
 
