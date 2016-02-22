@@ -37,4 +37,4 @@ inner join tbl_AreaDanada ad
 inner join tbl_TejidoVivo tv
 	ON tv.TVID=u.CATVID
 --where CACAID=1485
-order by CuaNumero_de_cuadro, EspEspecies
+order by year(FeFecha_de_colecta), month(FeFecha_de_colecta),CuaNumero_de_cuadro, EspEspecies
