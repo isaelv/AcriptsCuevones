@@ -17,6 +17,7 @@ select
 	,gr.GRGenero
 	,d.DiaDiametro
 	,ar.ARAlturaReclutacm
+	,ar.ARUltimaActualizacion
 	
 from tbl_ReclutasConglomerado rc
 
@@ -40,9 +41,8 @@ inner join tbl_Diametro d
 
 inner join tbl_AlturasReclutas ar
 	on rc.RCARID=ar.ARID
---where d.DiaDiametro = 9999 and ar.ARAlturaReclutacm is null and gr.GRGenero != 'SR'
-where/* c.ColAbreviatura = 'ND' and */MONTH(f.FeFecha_de_colecta) = 12 and YEAR(f.FeFecha_de_colecta)= 2014-- and MMuestras like '06%' --and GRGenero = 'SR' --and MMuestras like '%9999'
---where RCID = 186
---where c.ColAbreviatura = 'EAR'
---order by año, mes
+
+where
+	MONTH(f.FeFecha_de_colecta) = 10 and YEAR(f.FeFecha_de_colecta)= 2014 and MMuestras not like '%9999'
+	
 order by MMuestras

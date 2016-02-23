@@ -21,3 +21,13 @@ El resultado final es el listado de las muestras no incluidas en tbl_ReclutasCon
 
 ####ARCHIVO: "C:\Users\Héctor\Desktop\Scripts creación de la BDCuevones\varillasReclutas\Identificando muestras\insertandoMuestrasSinReclutasYNoMedidas.sql"
 
+Se tiene que construir una tabla temporal con los datos de todas las columnas que se necesitan insertar en la tabla destino **tbl_Reclutasconglomerados**. La tabla temporal es necesaria ya que la tabla de destino no acepta valores nulos; de está manera evitamos los errores al intentar insertar columna por columna.
+
+
+1. Para construir una *tabla temporal* usamos `CREATE TABLE #nombreTablaTemporal (nombreColumna "tipo de dato",...);`.
+
+2. Para insertar en la tabla temporal sólo los ID de las muestras en la tabla destino, usamos `INSERT INTO ` con el `SELECT, EXCEPT, SELECT` de la consulta de indentificación de muestras.
+
+3. Se insertan en la tabla temporal los valores del resto de las columnas necesarias de la tabla destino usando `INSERT INTO`.
+
+4. Finalmente, se insertan los datos de la tabla temporal en la tabla destino.
