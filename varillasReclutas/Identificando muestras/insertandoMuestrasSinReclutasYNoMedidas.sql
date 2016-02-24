@@ -32,7 +32,7 @@ on rc.RCFEID = f.FeID
 inner join tbl_Muestras m
 on rc.RCMID = m.MID
 
-where MONTH(f.FeFecha_de_colecta)=10 and YEAR(f.FeFecha_de_colecta)=2014 
+where MONTH(f.FeFecha_de_colecta)=6 and YEAR(f.FeFecha_de_colecta)=2014 
 order by mm.MID;
 
 
@@ -41,33 +41,46 @@ order by mm.MID;
 	/*Insertando valores por defecto para la tabla temporal*/
 	
 	UPDATE #muestrasSinReclutas
-	set alturaReclutaID = 1, diametroreclutaID = 1, GeneroID = 17, FechaID =	69
+	set alturaReclutaID = 1, diametroreclutaID = 1, GeneroID = 17, FechaID =	61
 	where ColectorID is null;
 	
 	/*Insertando el ID de los colectores*/
 	
 	update #muestrasSinReclutas
-	set ColectorID = 5
+	set ColectorID = 4
 	--where (IDMuestras >125 and IDMuestras < 501) or (IDMuestras > 1000 and	IDMuestras < 1501)
-	where ColectorID is null
-		/*
-		(IDMuestras between 1 and 500 ) or
+	where --ColectorID is null
+		
+		(IDMuestras between 301 and 2000 ) or
 		(IDMuestras between 1001 and 1500 )
-		*/
+		
 		
 	
 	/*Modificando la columna GeneroID de la tabla temporal para las unidades	no medidas*/
 
 	update #muestrasSinReclutas
-	set GeneroID = 17
-	where 
-		(IDMuestras between 1 and 50) or
-		(IDMuestras between 76 and 100) or
-		(IDMuestras between 126 and 175) or
-		(IDMuestras between 251 and 275) or
-		(IDMuestras between 301 and 325) or
-		(IDMuestras between 351 and 375)
-	
+	set GeneroID = 18
+	where IDMuestras between 826 and 850
+		/*
+		(IDMuestras between 51 and 75) or
+		(IDMuestras between 101 and 125) or
+		(IDMuestras between 176 and 250) or
+		(IDMuestras between 276 and 300) or
+		(IDMuestras between 326 and 350) or
+		(IDMuestras between 376 and 500) or
+		(IDMuestras between 676 and 700) or
+		(IDMuestras between 951 and 975) or
+		(IDMuestras between 1201 and 1225) or
+		(IDMuestras between 1275 and 1350) or
+		(IDMuestras between 1201 and 1225) or
+		(IDMuestras between 1276 and 1350) or
+		(IDMuestras between 1401 and 1425) or
+		(IDMuestras between 1501 and 1525) or
+		(IDMuestras between 1726 and 1775) or
+		(IDMuestras between 1826 and 1875) or
+		(IDMuestras between 1901 and 1925) or
+		(IDMuestras between 1951 and 1975)
+		*/
 /*CONSULTANDO LA TABLA TEMPORAL*/
 select *
 from #muestrasSinReclutas;
