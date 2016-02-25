@@ -32,7 +32,7 @@ on rc.RCFEID = f.FeID
 inner join tbl_Muestras m
 on rc.RCMID = m.MID
 
-where MONTH(f.FeFecha_de_colecta)=6 and YEAR(f.FeFecha_de_colecta)=2014 
+where MONTH(f.FeFecha_de_colecta)=12 and YEAR(f.FeFecha_de_colecta)=2013 
 order by mm.MID;
 
 
@@ -41,49 +41,48 @@ order by mm.MID;
 	/*Insertando valores por defecto para la tabla temporal*/
 	
 	UPDATE #muestrasSinReclutas
-	set alturaReclutaID = 1, diametroreclutaID = 1, GeneroID = 17, FechaID =	61
+	set alturaReclutaID = 1, diametroreclutaID = 1, GeneroID = 17, FechaID =	47
 	where ColectorID is null;
 	
 	/*Insertando el ID de los colectores*/
 	
 	update #muestrasSinReclutas
-	set ColectorID = 4
+	set ColectorID = 3
 	--where (IDMuestras >125 and IDMuestras < 501) or (IDMuestras > 1000 and	IDMuestras < 1501)
 	where --ColectorID is null
 		
-		(IDMuestras between 301 and 2000 ) or
-		(IDMuestras between 1001 and 1500 )
+		(IDMuestras between 1 and 250 ) or
+		(IDMuestras between 826 and 1225 ) or
+		(IDMuestras between 1500 and 2000 ) or
+		(IDMuestras between 726 and 750 ) or
+		(IDMuestras between 1001 and 1550 ) or
+		(IDMuestras between 1601 and 1650 ) or
+		(IDMuestras between 1976 and 2000 )
 		
-		
-	
 	/*Modificando la columna GeneroID de la tabla temporal para las unidades	no medidas*/
 
 	update #muestrasSinReclutas
 	set GeneroID = 18
-	where IDMuestras between 826 and 850
-		/*
-		(IDMuestras between 51 and 75) or
+	where --IDMuestras between 1176 and 1200
+		
+		(IDMuestras between 1 and 75) or
 		(IDMuestras between 101 and 125) or
-		(IDMuestras between 176 and 250) or
-		(IDMuestras between 276 and 300) or
-		(IDMuestras between 326 and 350) or
-		(IDMuestras between 376 and 500) or
-		(IDMuestras between 676 and 700) or
-		(IDMuestras between 951 and 975) or
-		(IDMuestras between 1201 and 1225) or
-		(IDMuestras between 1275 and 1350) or
-		(IDMuestras between 1201 and 1225) or
-		(IDMuestras between 1276 and 1350) or
-		(IDMuestras between 1401 and 1425) or
-		(IDMuestras between 1501 and 1525) or
-		(IDMuestras between 1726 and 1775) or
-		(IDMuestras between 1826 and 1875) or
-		(IDMuestras between 1901 and 1925) or
-		(IDMuestras between 1951 and 1975)
-		*/
+		(IDMuestras between 176 and 200) or
+		(IDMuestras between 226 and 250) or
+		(IDMuestras between 401 and 500) or
+		(IDMuestras between 551 and 600) or
+		(IDMuestras between 701 and 725) or
+		(IDMuestras between 751 and 825) or
+		(IDMuestras between 926 and 950) or
+		(IDMuestras between 1001 and 1050) or
+		(IDMuestras between 1076 and 1125) or
+		(IDMuestras between 1151 and 1225) or
+		(IDMuestras between 1376 and 1450) or
+		(IDMuestras between 1501 and 2000)
+		
 /*CONSULTANDO LA TABLA TEMPORAL*/
 select *
-from #muestrasSinReclutas;
+from #muestrasSinReclutas
 
 /*4. INSERTANDO LOS DATOS EN LA TABLA DESTINO "tbl_ReclutasConglomerado"*/
 insert into tbl_ReclutasConglomerado (RCFEID, RCColID, RCMID, RCGRID, RCARID, RCDiaID)

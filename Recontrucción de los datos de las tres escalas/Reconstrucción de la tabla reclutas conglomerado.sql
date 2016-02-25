@@ -43,6 +43,6 @@ inner join tbl_AlturasReclutas ar
 	on rc.RCARID=ar.ARID
 
 where
-	MONTH(f.FeFecha_de_colecta) = 6 and YEAR(f.FeFecha_de_colecta)= 2014 and MMuestras not like '%9999'
+	MONTH(f.FeFecha_de_colecta) = 12 and YEAR(f.FeFecha_de_colecta)= 2013 and MMuestras not like '%9999'
 	
-order by MMuestras 
+order by MMuestras

@@ -24,5 +24,5 @@ inner join tbl_Fecha f
 inner join tbl_Muestras m
 	on rc.RCMID=m.MID
 
-where MONTH(f.FeFecha_de_colecta)=6 and YEAR(f.FeFecha_de_colecta)=2014 and m.MMuestras not like '%9999'
+where MONTH(f.FeFecha_de_colecta)= 12 and YEAR(f.FeFecha_de_colecta)=2013 and m.MMuestras not like '%9999'
 order by MMuestras;
