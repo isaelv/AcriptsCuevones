@@ -14,9 +14,6 @@ select
 	,gg.GruID
 	,gg.GruGrupo
 	,rc.RCGRID
-	,gr.GRGenero
-	,d.DiaDiametro
-	,ar.ARAlturaReclutacm
 	,ar.ARUltimaActualizacion
 	
 from tbl_ReclutasConglomerado rc
@@ -42,7 +39,5 @@ inner join tbl_Diametro d
 inner join tbl_AlturasReclutas ar
 	on rc.RCARID=ar.ARID
 
-where
-	MONTH(f.FeFecha_de_colecta) = 12 and YEAR(f.FeFecha_de_colecta)= 2013 and MMuestras not like '%9999'
-	
-order by MMuestras
+--where MONTH(FeFecha_de_colecta)=2 and YEAR(FeFecha_de_colecta)=2013
+order by rc.RCMID

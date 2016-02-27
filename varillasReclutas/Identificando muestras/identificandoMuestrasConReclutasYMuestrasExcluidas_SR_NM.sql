@@ -15,6 +15,7 @@ except /*El operador EXCEPT, entre las dos consultas select, permite filtrar los
 select
 	rc.RCMID
 	,m.MMuestras
+
 	
 from tbl_ReclutasConglomerado rc
 
@@ -24,5 +25,6 @@ inner join tbl_Fecha f
 inner join tbl_Muestras m
 	on rc.RCMID=m.MID
 
-where MONTH(f.FeFecha_de_colecta)= 12 and YEAR(f.FeFecha_de_colecta)=2013 and m.MMuestras not like '%9999'
+where  MONTH(f.FeFecha_de_colecta)= 2 and YEAR(f.FeFecha_de_colecta)=2013 and MMuestras not like '%9999'
+
 order by MMuestras;
