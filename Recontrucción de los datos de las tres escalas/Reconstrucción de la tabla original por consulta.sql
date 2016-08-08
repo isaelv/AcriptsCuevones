@@ -12,7 +12,7 @@ select
 	,e.EspEspecies
 	,co.[CobCobertura(%)]
 	,a.[AltAlturacm(h1)]
-	,a.[AltAlturacm(h2)]selec
+	,a.[AltAlturacm(h2)]
 	,a.[AltAlturacm(h3)]
 
 
